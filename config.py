@@ -6,7 +6,7 @@ load_dotenv()
 
 # Bot setup
 PREFIX = "."
-BOT_NAME= "Example Nextcord (GitHub)"
+BOT_NAME= "fettige Fritten)"
 
 #Role IDs
 
