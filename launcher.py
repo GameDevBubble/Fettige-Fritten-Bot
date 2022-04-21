@@ -55,6 +55,17 @@ async def load(ctx, extension):
 async def unload(ctx, extension):
         bot.unload_extension(f'cogs.{extension}')
         await ctx.send(f'Unloaded Cog `{extension}`.')
+        
+        
+@bot.command()
+@has_permissions(manage_messages=True)
+#The amount also means how much message to delete
+async def purge(ctx, amount=100):
+    mention = ctx.author.mention
+    await ctx.channel.purge(limit=amount)
+    
+    
+    
 
 for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
