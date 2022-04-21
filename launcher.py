@@ -11,6 +11,10 @@ import random
 from itertools import cycle
 import config
 import sys
+import time
+import datetime
+from nextcord.ext import commands
+from nextcord.ext.commands.core import command, has_permissions
 
 
 
@@ -59,6 +63,22 @@ async def unload(ctx, extension):
 for filename in os.listdir('cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
+
+
+
+time = datetime.datetime.now()
+today_time = time.strftime(" • Today at %I:%M %p")
+
+
+
+@bot.command()
+@has_permissions(manage_messages=True)
+#The amount also means how much message to delete
+async def purge(ctx, amount=100):
+    mention = ctx.author.mention
+    await ctx.channel.purge(limit=amount)
+
+
 
 
 load_dotenv()
